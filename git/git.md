@@ -44,3 +44,18 @@ $는 터미널이 준비됐다는 것을 뜻함.
 
 - `$ git clone 'URL'` : github 내의 오픈소스로 공개되어 있는 소스코드를 clone으로 내 컴퓨터로 가져와서 실행 할 수 있는 명령어
  
+- `git branch <branch-name>` : 브랜치 추가
+
+- `git switch <branch-name>` : 추가된 브랜치 스위치
+
+- `git branch -d <branch-name>` : 브랜치 삭제
+
+- `git merge <target-branch>`: 브랜치 병합 주체인 master 에서 명령어 작성 ex> git mer ge f/l-2
+
+- ` git reset --hard HEAD~x` : 제일 마지막부터 순서대로 x개의 commit을 삭제한다.
+
+## github 사용 주의사항
+-`https://gitignore.io : 프로젝트 작업중 불필요한 찌꺼기 파일을 정리해줌
+  **.gitignore** 파일명에 넣어서 관리하면 commit 시 찌꺼기파일은 자동으로 빠짐
+
+- 모든 프로젝트에 README.md 와 .gitignore는 다 있음
