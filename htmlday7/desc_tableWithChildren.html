@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 Selector Basic</title>
+    <style>
+        table >tbody> tr > th {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>지역</th>
+        </tr>
+        <tr>
+            <td>윤인성</td>
+            <td>서울특별시 강서구 내발산동</td>
+        </tr>
+    </table>
+</body>
+</html>
+<!--table태그 안에 tbody태그가 들어있지만 생략되어있음 그래서 후손 선택자로 선택해야함-->
