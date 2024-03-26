@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*alert('반갑습니다')
+        let pi=3.14;  변수 선언 시 let 이랑 ; 는 생략이 가능하긴 하지만 명시적으로는 써야함
+        let rad=10
+        alert(2*pi*rad)
+        if(1<2){
+            alert('1<2는 참입니다')
+        }
+        alert("프로그램 종료")
+
+
+        let date=new Date(); //new: Date클래스 ->인스턴스(객체,실체)생성
+        let year=date.getFullYear();
+        month=date.getMonth()+1  월이 0부터 시작하기 떄문에 +1을 해줌
+        let day=date.getDay();
+        let hours=date.getHours();
+        let minutes=date.getMinutes()
+        let seconds=date.getSeconds()
+        if(hours<12){
+            alert('오전')}
+
+        mon=date.getMonth()+1
+        if(3<= mon && mon <=5){
+        alert("봄")
+        }
+        else if(6<= mon && mon <=8){
+        alert("여름")
+        }
+        else if(9<= mon && mon <=11){
+        alert("가을")
+        }
+        else{
+        alert("겨울")
+        }
+
+
+        alert("안녕하세요"[1])
+
+        console.log("웹서비스")
+        변수(let 생략가능), 상수 (const 컨스턴트의 약자)
+const pi=3.14
+        pi=pi+1
+        console.log(pi)
+const name="홍길동"
+        const name="임꺽정" 에러발생 const는 상수를 선언하기때문에 다른 데이터를 넣을 수 없음 값이 변경x
+
+const exp=2.718 상수는 반드시 처음에 선언해줘야함
+
+        let v=10
+        v+=10
+
+            const:상수
+           let(변수 재선언이 불가),var(변수 재선언이 가능):변수
+
+
+        let a=1
+        a++
+        console.log(a)
+        val n="hello"
+        console.log(n)
+        var n ="js"
+        console.log(n)
+
+        inputData=prompt("message", "_default")
+        alert(inputDate)*/
+
+       // const inputData=confirm("가입하시겠습니까")
+        //alert(inputData)
+
+        //alert(Number("123")+10)
+        //alert("123"+10)
+
+//inputData = prompt("message", "_default")
+//alert(Number(inputData)*2.54)
+
+/*inputData=prompt("message", "")
+       if(Number(inputData)>0){alert("입렵한 숫자는 양수입니다.")}
+       elif(Number(inputData)<0){alert("입렵한 숫자는 음수입니다.")}
+       elif(Number(inputData)==0){alert("입력한 숫자는 0입니다.")}
+*//*
+switch("hello"){
+        case 0:
+        alert("짝수")
+        break
+        case 1:
+        alert("홀수")
+        break
+        default:
+        alert("숫자가아닙니다")
+        break
+        }
+*/ //삼항 연산자
+    /*let x=1
+        res=(x>=0)?"0이상의 숫자":"0 미만의 숫자"
+        alert(res)*/
+       //res=prompt("정수를 입력", "")
+       //alert(Number(res)%2==1?"홀수":"짝수")
+input_year = prompt("출생연도 입력: ","");
+
+year = input_year % 12;
+
+if (year == 0){
+alert("원숭이")
+}else if(year == 1){
+alert("닭")
+}else if(year == 2){
+alert("개")
+}else if(year == 3){
+alert("돼지")
+}else if(year == 4){
+alert("쥐")
+}else if(year == 5){
+alert("소")
+}else if(year == 6){
+alert("호랑이")
+}else if(year == 7){
+alert("토끼")
+}else if(year == 8){
+alert("용")
+}else if(year == 9){
+alert("뱀")
+}else if(year == 10){
+alert("말")
+}else{
+alert("양")
+}
+
+        inputYear=prompt("태어난 해?","")
+       s_tti="원숭이,닭,개,돼지,쥐,소,호랑이,토끼,용,뱀,말,양".split(",")
+        console.log(s_tti)
+      alert(`${inputYear}년에 태어난${s_tti[inputYear%12]}띠`)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
