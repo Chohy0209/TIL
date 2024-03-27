@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /* 익명함수를 정의해서 myfunc에 담음
+        const myfunc=function(){
+            console.log("함수입니다 1")
+            console.log("함수입니다 2")
+            console.log("함수입니다 3")
+        } 선언적 함수 함수 정의 부터 이름을 부여
+        function myfunc(){
+            console.log("함수입니다 1")
+            console.log("함수입니다 2")
+            console.log("함수입니다 3")
+
+        }
+        myfunc()
+        console.log(myfunc)
+        console.log(typeof myfunc)
+        */
+
+        /*
+        function f(x){
+            return x*x
+            }
+            console.log(f(5))
+            */
+           /*
+            function isLeapYear(y){
+
+            if(y%400==0){alert("윤년")}
+            else if(y%100==0){alert("평년")}
+            else if(y%4==0){alert("윤년")}
+
+            }
+        y=prompt("년도","")
+        isLeapYear(y)*/
+/*
+        function sumAll(s, e){
+        let output=0
+        for(let i=s; i<=e; i++){ i에 s를 처음 넣고 i 가 e 보다 작거나 같다면 oupput에 i 를 추가한 후 i에 1을 더해 다음 반복에 들어감
+            output+=i
+        }
+        return output
+        }
+        console.log(`1~100까지 합:${sumAll(1,100)}`)
+*/
+/*
+        function getMin(arr){
+        res=100
+        for(item of arr){ arr에 있는 요소를 item에 하나씩 넣어서 읽음 파이썬의 for i in x와 같은 문장
+        if(res>item){
+        res=item
+        }
+        }
+        return res
+        }
+        const testArr=[30,50,20,10,40]
+        console.log(`최소값=${getMin(testArr)}`)
+*/
+/*        function var_arg(x,...items){//매개변수 개수가 일정치 않을때
+        console.log(items) //이렇게 하면 x에 10이 들어가고 items에 나머지가 들어가므로 10을 제외한요소가 나옴
+        console.log(Array.isArray(x)) //이게 x가 배열인지 아닌지 확인하는 함수 T/F로 출력됨
+        console.log(typeof(x))// 해당 x에 대한 타입을 알려줌
+        if(typeof(x)=='number'){
+        console.log("숫자입니다")
+        }
+        else if(Array.isArray(x)){
+        console.log("배열입니다")
+        }
+        }
+        var_arg(10,20)
+        var_arg([10,20,30,40,50])
+*/
+/*    function earnings(m,h){
+        console.log("시급은", `${m*h}`,"원 입니다" )
+    }
+     m=prompt("시급","")
+     h=prompt("시간","")
+     earnings(m,h)
+*/
+/*
+function earnings(name,wage=9860,hours=40){
+console.log(name)
+console.log(wage)
+console.log(hours)
+}
+earnings("홍길동")//기본시급 9860 기본근무시간 40
+earnings("임꺽정",10000)//기본 근무시간 40
+earnings("이순신",10000,60)
+*/
+/*        function test(){
+        console.log(arguments)
+        console.log(arguments.length)
+        for(i=0;i<arguments.length;i++){
+        console.log(arguments[i])
+        }
+
+        }
+        test(1,2)
+*/
+        //콜백함수:매개변수로 전달되는 함수
+        function f(cb){
+        for(i=0;i<3;i++){
+        cb(i)
+        }
+        }
+<!--        function myPrint(){-->
+<!--            console.log(`${i}번째 콜백함수가 호출됐습니다`)-->
+<!--        }-->
+<!--        f(function(i){-->
+<!--            console.log(`${i}번째 콜백함수가 호출됐습니다`)-->
+<!--        })-->
+
+<!--        //forEach:배열이 가지고있는 함수,배열 내부 요소를 이용해서 콜백함수 호출-->
+
+<!--        const num=[10,20,30]-->
+<!--        num.forEach(function(value,index,array){-->
+<!--        console.log(`${index}번째 요소:${value}`)-->
+<!--        })-->
+
+<!--//map:배열이 가지고 있는 함수,콜백함수의 리턴 결과로 새로운 배열 생성-->
+<!--        const num=[10,20,30]-->
+<!--        res=num.map(function(value,index,array){-->
+<!--        return 2*value-->
+<!--        })-->
+<!--        console.log(res)-->
+//map:배열이 가지고 있는 함수,콜백함수의 리턴 값이 true에 해당하는 값들로 새로운 배열 생성
+/*        const num=[10,20,30,40,50]
+res=num.filter(function(value,index,array){
+return value%20==0
+        })
+        console.log(res)
+        */
+//화살표 함수: => 화살표로 만든 함수
+        const num4=[1,2,3,4,5,6]
+        console.log(num4.filter((value)=>value%2==0))
+//타이머 함수
+//setTimeout(콜백함수,시간(밀리초단위 1000밀리초가 1초) :특정 시간 후에 콜백함수를 1번 호출
+//clearTimeout(타이머id):setTimeout함수로 설정한 타이머 제거
+/*
+setTimeout(() => {
+console.log("1초후에 실행")
+},1*1000)
+*/
+
+
+//setInterval(콜백함수,시간(밀리초)): 특정 시간 간격으로 콜백함수를 호출
+//clearInterval(타이머id):setInterval함수로 설정한 타이머 제거
+/*cnt=0
+intervalId=setInterval(() => {
+console.log(`1초마다 실행(${cnt}번째)`)
+cnt++
+},1*1000) */
+
+
+//setTimeout으로 clearInterval 함수를 5초후에 실행시킴
+console.log("5초후에 타이머 종료")
+setTimeout(() => {
+
+clearInterval(intervalId)
+},5*1000)
+cnt=0
+intervalId=setInterval(() => {
+console.log(`1초마다 실행(${cnt}번째)`)
+cnt++
+},1*1000)
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
