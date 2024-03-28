@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>//객체선언(object)
+        const mypet={
+            name:'하늘', //속성(attribute)
+            eat:function(food){ //메서드 (method)
+            alert(this.name+"은"+food+"먹습니다") //this는 객체를 말함
+
+
+            }
+
+        }
+        mypet.eat("강아지밥")
+
+        const product={ //객체가 저장되어진 변수를 객체 변수라 함.특정객체가 변수 product에 저장되어있고 아래 속성들을 가지고있음
+        제품명:'망고',
+        유형:'당절임',
+        성분:'망고,설탕',
+        원산지:'필리핀'
+        }
+        console.log(product['제품명']) //''를 붙이지 않으면 변수로 인식해서 에러가 뜸 ''를 붙여야 속성으로 인식
+
+const student={} //빈 객체를 student에 담음
+        student.이름="홍길동", //student에 이름이라는 속성을 추가함
+        student.취미="영화감상",
+        student.장래희망="데이터사이언티스트"
+
+        delete student.장래희망
+
+        console.log(student)
+
+        //stringify():javascript객체를  json문자열로 변환
+        console.log(JSON.stringify(student,null,2))
+        //함수선언 방법:function(){} or ()=>{}
+        const test={
+        a:function(){
+        console.log(this)
+        },
+        b:()=>{
+        console.log(this)
+        }
+        }
+        test.a()
+        test.b() //화살표 함수는 this 사용 시 window객체가 출력됨
+
+        //객체 자료형:속성,메서드를 갖는 객체가 갖는 자료형으로는 배열,함수
+        //(배열도 객체이기 때문에 속성 추가가 가능함)
+        const arr=[]
+        arr.age=35
+        console.log(arr) //[age:35]
+        //함수도 객체
+        function f(){}
+        f.age=20
+        console.log(f.age)
+
+        //기본 자료형(객체가 아님,속성을 가질 수 없음):숫자,문자,불린(참/거짓)
+        //    const x=100
+         //   x.name"홍길동"  속성이 만들어지지않음
+         //   console.log(x.name) undefined
+
+        //기본 자료형이지만 객체로 정의
+        //숫자->숫자객체(Number), 문자->문자객체(string), 불린->불린객체(Boolena)
+
+       const obj_num=new Number(100)
+       console.log(typeof obj_num)//object
+        obj_num.data=7
+        console.log(obj_num.data)//7출력
+
+
+        msg="안녕하세요"
+        obj_msg=new String(msg)
+        console.log(obj_msg)
+        obj_msg.who="홍길동"
+        console.log(obj_msg.who)
+
+        const msg2="하이"
+        msg2.who="임꺽정"//일시적으로 저장
+        console.log(msg2.who)//일시적으로 저장된 속성이 바로 제거되서 undefined가 뜸
+
+        //객체자료형.prototype.메서드명=function(){}
+        //prototype객체에 속성 또는 메서드를 추가하면,모든객체(기본 자료형도 포함)에서
+        //추가한 속성과 메서드를 사용할 수 있다.
+
+        //Number 클래스에 power 메서드를 추가해라.
+        //숫자(객체)들은 power 메서드를 호출할 수 있다.
+        Number.prototype.power=function(n){
+            return this.valueOf()**n
+        }
+        const a=3
+        console.log(a.power(2))
+
+        const s="안녕하세요"
+            console.log(s.indexOf("안녕"))// 0
+            console.log(s.indexOf("하세요")) // 2
+            console.log(s.indexOf("없는")) // -1
+
+
+        //문자열의 존재 유무를 조사하는 함수
+        //클래스(문자열객체).prototype.메소드명
+       /*
+        String.prototype.공부한다=function(){
+        if(food=="바나나"){
+        console.log("열심히 공부한다")
+        }
+        }
+        const j_monkey="엉덩이가빨간원숭이"
+        j_monkey.공부한다("바나나") */
+
+        //문자열객체에 contain이라는 함수를 정의 contain함수는 그 객체 안에 해당 데이터의 인덱스가 0보다 크면 true
+        //a2라는 문자열이 저장된 객체 생성 String 클래스에 메서드와 속성 사용 가능 contain은 문자열 객체 String클래스에 정의해서 a2객체도 사용가능
+
+        String.prototype.contain=function(data){
+        return this.indexOf(data)>=0 //안녕하세요에서 안녕이라는 데이터의 index가 어디냐 >=0 라는 뜻
+        }
+        const a2= "안녕하세요"
+        console.log(a2.contain("안녕"))
+
+        //Array객체(배열)에 myContain메서드를 새롭게 추가
+        //myContain메서드 기능은 특정데이터가 배열에 있는지 여부를 출력
+
+        Array.prototype.myContain=function(data){
+        return this.indexOf(data)>=0
+        }
+
+        const arr2=[10,20,30]
+        console.log(arr2.myContain(20)) //true
+
+        const n2=123.456789
+        console.log(n2)
+        console.log(n2.toFixed(2))//소수점 이하 몇째자리까지 반올림해서 나올것인가
+
+        const s3="   안녕   "
+        console.log(s3) //공백이 출력
+        console.log(s3.trim()) //문자열 앞 뒤 공백이 제거
+
+
+        input="시가,종가,거래량"
+        s_input=input.trim()
+        ss_input=s_input.split(",")
+        console.log(s_input)
+        console.log(ss_input)
+//csv,XML,JSON
+//JSON.stringify():자바스크립트 객체를 JSON문자열로 변환
+
+const data={
+        name:'홍길동',
+        age:30,
+        addr:'서울특별시'
+        }
+console.log(data) //자바스크립트객체 출력
+console.log(JSON.stringify(data))//자바스크립트객체 ->JSON문자열로 변환하여 출력
+console.log(JSON.stringify(data,null,4))
+
+//JSON문자열 ->자바스크립트객체로 변환하여 출력
+const json_data=JSON.stringify(data)
+console.log(JSON.parse(json_data))
+
+//Math객체
+const n5=Math.random() //0<=~<1
+console.log(n5)
+//0<=값<10
+//로또 1~45
+console.log(Math.floor(n5*45+1))//1~45
+console.log(n5*45+1)//1~45.99999...
+console.log(Math.floor(0.1)) //0
+console.log(Math.floor(0.9))//0
+
+
+
+
+
+    </script>
+
+
+
+
+</head>
+<body>
+<!--객체지향 프로그래밍 ->유지 보수를 쉽게하기 위해 설계-->
+<!--클래스:설계도(틀,template)->실체(객체,object)-->
+
+<!--자동차 설계도(클래스) ->자동차(클래스) ->소나타,그랜져(객체)-->
+<!--여기서 더 나누면 소나타 그랜져도 클래스로 바뀌고 내 자동차1 내자동차 2...등으로 객체가 될 수 있음(상대적인것)-->
+
+<!--매서드(동작,함수):객체의 동작-->
+<!--ex)그랜져(객체)가 달린다(메서드)-->
+<!--속성(attribute,특성):객체의 속성-->
+<!--ex)그랜져(객체)의 배기량(속성):3000cc(속성값)-->
+
+<!--사람(클래스) -> 홍길동(객체) .....-> 먹는다 달린다 공부한다 (메서드)-->
+<!-- ->나이,신장,몸무게 (속성)-->
+
+<!--동물클래스-->
+<!--척추동물,무척추동물-->
+<!--동물(조상 클래스)->척추(부모 클래스)->파충류(자식 클래스)->뱀->독사-->
+<!--상속:부모 클래스가 가지고 있는 메서드 및 속성을 자식 클래스가 물려받는것-->
+
+
+</body>
+</html>
