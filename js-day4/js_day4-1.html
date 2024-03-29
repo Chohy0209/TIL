@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+                document.addEventListener('DOMContentLoaded', ()=>{
+                const a=document.querySelector("#a")
+                const b=document.querySelector("#b")
+                a.textContent="<h1>a영역에 출력되는 텍스트</h1>"
+                b.innerHTML="<h1>b영역에 출력되는 텍스트</h1>"
+                //textContent는 단순히 문자로 나타내고 innerHTML을 해야 HTML문서에 적용
+
+
+                const header=document.querySelectorAll('h1')
+                //헤더의 각각을 읽으면서 그 값을 인수head로 받아 아래의 함수들을 실행
+                header.forEach((head)=>{
+                head.textContent="안녕하세요"
+                head.style.color="blue"
+                head.style.backgroundColor="yellow"
+                head.style.padding="10px"}
+                   )})
+
+                //이런식의 문법도 가능
+
+
+                /*document.addEventListener('DOMContentLoaded', ()=>{
+                const header=document.querySelector('h1')
+
+                header.textContent="안녕하세요"
+                header.style.color="blue"
+                header.style.backgroundColor="yellow"
+                header.style.padding="10px" */
+
+
+//document.querySelector 함수로 body태그 내에 특정 태그에 접근가능
+/*
+태그,#아이디, .클래스, [속성=값], 선택자조상 선택자후손,선택자부모>선택자 자손 등으로도 접근가능
+*/
+
+    </script>
+
+
+</head>
+<body>
+<h1>
+
+
+</h1>
+<h1></h1>
+
+<div id="a"></div>
+<div id="b"></div>
+
+</body>
+</html>

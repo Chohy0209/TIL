@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+        const rects=document.querySelectorAll(".rect")
+        rects.forEach((rect,index)=>{ //각각의 이미지 태그가 rect에 들어가고 index를 0부터 매김
+        const width=(index+1)*100
+        const src=`http://placekitten.com/${width}/250`
+        rect.setAttribute('src',src)}) //각각의 객체에 'src'라는 속성을 변수src로 설정
+        }
+
+)
+//http://placekitten.com/${width}/250 고양이 이미지/ 높이와 /너비 를 호출하는 페이지
+    </script>
+</head>
+<body>
+
+<img class="rect">
+<img class="rect">
+<img class="rect">
+<img class="rect">
+
+</body>
+</html>
