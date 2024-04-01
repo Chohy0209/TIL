@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+document.addEventListener("DOMContentLoaded",() => {
+        //  console.log('abc@def'.indexOf('@'))
+const email=document.querySelector('input')
+const p=document.querySelector('p')
+const isVaildEmailAddr=(v)=>{
+    return (v.indexOf('@')>1) && (v.split("@")[1].indexOf(".")>1)
+}
+email.addEventListener("keyup", (event) => {
+        const v=event.currentTarget.value
+        if(isVaildEmailAddr(v)){
+            p.textContent="올바른 이메일 형식"
+            }
+           else{
+           p.textContent="잘못된 이메일 형식"
+           }
+})
+})
+
+/*
+//document.addEventListener(이벤트명, 이벤트발생시처리구문)
+//1번째 방식(예전방식)
+document.addEventListener("DOMContentLoaded",() => {
+    const textarea=document.querySelector('textarea')
+    const h1=document.querySelector('h1')
+    textarea.addEventListener('keyup',(e)=>{
+        const length=textarea.value.length
+        h1.textContent=`{length}`
+    })
+})
+//2번째 방식(요즘방식)
+myListener = (e)=>{
+   // const length=textarea.value.length //에러발생(리스너 내부에서 textarea참조 못함)
+    const length=e.currentTarget.value.length
+    h1.textContent=`{length}`
+}
+document.addEventListener("DOMContentLoaded",() => {
+    const textarea=document.querySelector('textarea')
+    const h1=document.querySelector('h1')
+    textarea.addEventListener('keyup',myListener)
+})
+
+*/
+
+    </script>
+
+
+</head>
+<body>
+<input><br>
+<p></p>
+</body>
+</html>
