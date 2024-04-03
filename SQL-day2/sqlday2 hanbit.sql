@@ -1,0 +1,1 @@
+SELECT * FROM 한빛무역.고객;
