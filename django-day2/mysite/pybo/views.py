@@ -1,6 +1,7 @@
 from django.shortcuts import  render, get_object_or_404,redirect
 from .models import Question
 from django.utils import timezone
+from pybo.forms import QuestionForm
 
 def detail(request, question_id):
     #question=Question.objects.get(id=question_id)
@@ -13,11 +14,27 @@ def index(request):
     context={'question_list':question_list}
     return render(request, 'pybo/question_list.html', context)
 
+def question_create(request):
+    if request.method == "POST": #post 방식 ->질문작성 후 -> 저장하기 -> 저장
+        form=QuestionForm(request.POST)
+        if form.is_valid(): #폼에 값이 올바르게 저장되었다면
+            question=form.save(commit=False) #임시저장
+            question.create_date=timezone.now() #작성일자 저장
+            question.save() #실제 저장
+            return redirect('pybo:index')
+
+    else: #get방식(초기화면에서 '질문등록하기' 눌렀을때) -> 질문폼
+        form=QuestionForm()
+    return render(request,'pybo/question_form.html',{'form':form})
+
+
 def answer_create(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     question.answer_set.create(content=request.POST.get('content'),
                                create_date=timezone.now())
     return redirect('pybo:detail', question_id=question.id)
+
+
 
     #return render(request , 템플릿 , 질문리스트->딕셔너리 구조)
 #render함수 : 질문리스트(python구조)에 템플릿(html 형식)을 적용해서 html문서로 변환하는 함수

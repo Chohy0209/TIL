@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <div class="container">
+    <h5 class="my-3 border-bottom pb-2">질문등록하기</h5>
+    <form method="post" >
+<!--        <form method="post" action="폼을 가지고 갈 서버측 프로그램 파일">-->
+        {% csrf_token %}
+        {{form.as_p}}
+<!--        form을 전달받아서 html코드를 생성-->
+    <button type="submit" class="btn btn-primary">저장하기</button>
+        </form>
+</div>
+{% endblock %}
