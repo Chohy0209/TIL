@@ -1,30 +1,34 @@
 from django.shortcuts import  render, get_object_or_404,redirect
 from .models import Question
 from django.utils import timezone
-from pybo.forms import QuestionForm
-
+from .forms import QuestionForm
+from django.core.paginator import Paginator
 def detail(request, question_id):
     #question=Question.objects.get(id=question_id)
     question=get_object_or_404(Question,pk=question_id)
-    context={'question': question}
+    context = {'question': question}
     return render(request, 'pybo/question_detail.html', context)
 
 def index(request):
-    question_list=Question.objects.order_by("-create_date") #-:내림차순
-    context={'question_list':question_list}
+    #요청 페이지가 있다면 페이지 번호를 저장하고, 요청 페이가 없다면 1을 저장
+    page = request.GET.get('page', 1) #기본 요청 페이지 : 1
+    question_list = Question.objects.order_by('-create_date')
+    paginator=Paginator(question_list, 10) #페이지당 10개
+    page_obj=paginator.get_page(page) #요청 페이지(page)의 내용을 가져와서 page_obj에 저장
+    context = {'question_list': page_obj}
     return render(request, 'pybo/question_list.html', context)
 
 def question_create(request):
     if request.method == "POST": #post 방식 ->질문작성 후 -> 저장하기 -> 저장
-        form=QuestionForm(request.POST)
+        form = QuestionForm(request.POST)
         if form.is_valid(): #폼에 값이 올바르게 저장되었다면
-            question=form.save(commit=False) #임시저장
+            question = form.save(commit=False) #임시저장
             question.create_date=timezone.now() #작성일자 저장
             question.save() #실제 저장
             return redirect('pybo:index')
 
     else: #get방식(초기화면에서 '질문등록하기' 눌렀을때) -> 질문폼
-        form=QuestionForm()
+        form = QuestionForm()
     return render(request,'pybo/question_form.html',{'form':form})
 
 
