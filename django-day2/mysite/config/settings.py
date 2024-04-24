@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'pybo.apps.PyboConfig',
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', #로그인/아웃 관련 앱
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
