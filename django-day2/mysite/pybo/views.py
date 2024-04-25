@@ -1,8 +1,9 @@
 from django.shortcuts import  render, get_object_or_404,redirect
 from .models import Question
 from django.utils import timezone
-from .forms import QuestionForm
+from .forms import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
+from django.http import HttpResponseNotAllowed
 def detail(request, question_id):
     #question=Question.objects.get(id=question_id)
     question=get_object_or_404(Question,pk=question_id)
@@ -23,6 +24,7 @@ def question_create(request):
         form = QuestionForm(request.POST)
         if form.is_valid(): #폼에 값이 올바르게 저장되었다면
             question = form.save(commit=False) #임시저장
+            question.author=request.user #author 속성에 로그인 계정 저장
             question.create_date=timezone.now() #작성일자 저장
             question.save() #실제 저장
             return redirect('pybo:index')
@@ -34,10 +36,19 @@ def question_create(request):
 
 def answer_create(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    question.answer_set.create(content=request.POST.get('content'),
-                               create_date=timezone.now())
-    return redirect('pybo:detail', question_id=question.id)
-
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.author = request.user
+            answer.create_date = timezone.now()
+            answer.question = question
+            answer.save()
+            return redirect('pybo:detail', question_id=question.id)
+    else:
+        return HttpResponseNotAllowed('Only POST is possible.')
+    context = {'question': question, 'form': form}
+    return render(request, 'pybo/question_detail.html', context)
 
 
     #return render(request , 템플릿 , 질문리스트->딕셔너리 구조)
