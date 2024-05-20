@@ -804,8 +804,8 @@ pg.display.set_caption("Platformer Game") # 창 상단바 제목
 CLOCK = pg.time.Clock() # 게임 시간
 FPS = 60 # 초당 프레임
 RUN = True # 루프문 실행 여부
-FIX_BG = False # 배경 고정 모드
-BG_PATH = ["winter", "daytime", "Snow"] # 고정할 배경 영상 폴더 경로(각 폴더 이름만)
+FIX_BG =False # 배경 고정 모드
+BG_PATH = ["spring", "daytime", "Rain"] # 고정할 배경 영상 폴더 경로(각 폴더 이름만)
 
 # 캐릭터 객체 추가
 PINK_MAN = Player(image_path="img/player_1.png", direction="right",
